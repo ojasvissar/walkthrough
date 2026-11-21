@@ -112,16 +112,15 @@ function loadModel(next) {
   setCamera('orbit');
   const imported = ['github', 'codex'].includes(model.kind);
   const coverage = imported ? model.readCount.toLocaleString() + ' of ' + model.fileCount.toLocaleString() + ' supported source files read' : '';
-  const note = model.kind === 'demo' ? 'Onboarding to a new codebase takes weeks. Give us 90 seconds.' :
-    imported ? coverage + (model.truncated ? ' from a partial repository tree.' : '.') :
-    model.kind === 'snapshot' ? 'A preloaded tour of the project’s core modules.' : 'Walk through the rooms in your imported architecture.';
-  $('#repo-title').replaceChildren(document.createTextNode(model.name), Object.assign(document.createElement('span'), { textContent: '.' }));
+  const title = $('#repo-title');
+  title.replaceChildren(document.createTextNode(model.name), Object.assign(document.createElement('span'), { textContent: '.' }));
+  title.title = model.name;
   document.title = 'WalkThrough — ' + model.name;
-  $('#repo-caption').textContent = note;
-  $('#repo-slug').textContent = model.slug;
+  const slug = $('#repo-slug');
+  slug.textContent = model.slug;
+  slug.title = imported ? model.slug + ' · ' + coverage + (model.truncated ? ' from a partial repository tree' : '') : model.slug;
   $('#repo-mode').textContent = { demo: 'DEMO REPOSITORY', snapshot: 'PRELOADED SNAPSHOT', github: 'GITHUB REPOSITORY', codex: 'CODEX ARCHITECTURE', import: 'IMPORTED MODEL' }[model.kind];
   $('#stage-summary').textContent = '4 floors · ' + model.rooms.length + ' ' + (model.rooms.length === 1 ? 'room' : 'rooms');
-  $('#demo-subtitle').textContent = model.kind === 'demo' ? 'Four acts. One codebase.' : 'Live acts use The Tiny Shop.';
   $('#footer-state').textContent = model.kind === 'demo' ? 'Demo runtime ready' : 'Architecture ready';
   $('#show-history').hidden = model.kind !== 'demo';
   setStageStatus(palace ? '' : '3D is unavailable. Select a room from the list.');
@@ -260,9 +259,12 @@ function setStageStatus(status, failed = false) {
 function setAct(index) {
   step = index;
   for (const button of $$('[data-act]')) {
-    button.classList.toggle('active', step === Number(button.dataset.act));
-    button.setAttribute('aria-pressed', String(step === Number(button.dataset.act)));
-    button.disabled = (busy || model?.kind !== 'demo') && Number(button.dataset.act) > 0;
+    const act = Number(button.dataset.act);
+    const needsDemo = act > 0 && model?.kind !== 'demo';
+    button.classList.toggle('active', step === act);
+    button.setAttribute('aria-pressed', String(step === act));
+    button.disabled = act > 0 && (busy || needsDemo);
+    button.title = needsDemo ? 'Available in The Tiny Shop' : '';
   }
 }
 

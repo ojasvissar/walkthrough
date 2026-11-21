@@ -103,7 +103,7 @@
 
 :root[data-theme=dark] :is(.workspace-title h1,.inspector h2,.shop-page h1) { color: var(--ink); }
 :root[data-theme=dark] :is(.workspace-title h1 span,.shop-page h1 span) { color: #bdadff; }
-:root[data-theme=dark] :is(.workspace-title p,.repo-context,.room-path,.room-instruction,.demo-intro p,.step-number,.demo-step small,
+:root[data-theme=dark] :is(.repo-context,.room-path,.room-instruction,.step-number,.demo-step small,
   .workspace-footer,.codex-option,.text-btn,.section-label,#repo-message,.shop-page>p,.store-card p) { color: var(--muted); }
 :root[data-theme=dark] :is(.repo-badge,.room-meta .room-chip,.ask-provider,.citation-inline) {
   color: var(--accent-ink); background: #24382f; border-color: #436251;

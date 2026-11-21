@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./theme.css">
 </head>
-<body>
+<body class="workspace-page">
   <header class="masthead workspace-masthead">
     <div class="top-inner">
       <a class="brand" href="./" aria-label="WalkThrough home"><span class="brand-mark" data-icon="door-logo"></span><span>WalkThrough</span></a>
@@ -21,7 +21,7 @@
         <button class="top-link" data-nav="palace"><i data-icon="building"></i>Building</button>
         <button class="top-link" data-nav="trace"><i data-icon="trace"></i>Requests<span class="nav-request-dot" id="nav-request-dot" aria-hidden="true"></span></button>
         <button class="top-link" data-nav="alarms" id="nav-alarms"><i data-icon="bell"></i>Alarms<span class="nav-alarm-count" id="nav-alarm-count">1</span></button>
-        <button class="top-link" data-nav="ask"><i data-icon="small-spark"></i>Ask the building</button>
+        <button class="top-link" data-nav="ask" aria-label="Ask the building"><i data-icon="small-spark"></i><span>Ask<span class="ask-label-tail"> the building</span></span></button>
       </nav>
       <button type="button" class="theme-toggle" data-theme-toggle aria-label="Dark mode" aria-pressed="false" hidden></button>
     </div>
@@ -31,7 +31,6 @@
       <div class="workspace-title">
         <div class="repo-context"><span class="repo-badge" id="repo-mode">DEMO REPOSITORY</span><span class="slash">/</span><span class="repo-slug" id="repo-slug">walkthrough/tiny-shop</span></div>
         <h1 id="repo-title">The Tiny Shop<span>.</span></h1>
-        <p id="repo-caption">Onboarding to a new codebase takes weeks. Give us 90 seconds.</p>
       </div>
       <div class="repo-tools">
         <form id="repo-form" aria-label="Build a walkthrough from GitHub">
@@ -106,11 +105,10 @@
       </section>
       <aside class="inspector" aria-label="Room inspector">
         <div class="inspector-bar"><span><i data-icon="signpost"></i>Room inspector</span><span id="room-count"></span></div>
-        <div class="inspector-body" id="room-inspector" aria-live="polite"></div>
+        <div class="inspector-body" id="room-inspector" aria-live="polite" tabindex="0"></div>
       </aside>
     </section>
-    <section class="demo" aria-label="Demo sequence">
-      <div class="demo-intro"><div class="demo-heading"><i data-icon="play"></i>Demo sequence</div><p id="demo-subtitle">Four acts. One codebase.</p></div>
+    <section class="demo" aria-label="Demo actions">
       <div class="demo-steps" id="demo-steps">
         <button class="demo-step active" data-act="0"><span class="step-icon" data-icon="layers"></span><span><span class="step-label">Explore</span><small>See the architecture</small></span><span class="step-number">01</span></button>
         <button class="demo-step" data-act="1"><span class="step-icon" data-icon="trace"></span><span><span class="step-label">Trace login</span><small>Follow a request</small></span><span class="step-number">02</span></button>
