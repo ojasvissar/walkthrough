@@ -1,0 +1,14 @@
+{
+  "name": "walkthrough",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "test": "node tools/check-walk.mjs && node tools/check-login.mjs && node tools/check-story.mjs && node tools/check-ask.mjs",
+    "build": "node tools/build-site.mjs"
+  },
+  "dependencies": {
+    "ws": "8.18.3"
+  }
+}

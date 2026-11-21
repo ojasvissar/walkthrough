@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WalkThrough Audience</title>
+  <link rel="icon" href="./mark.svg">
+  <link rel="stylesheet" href="./audience.css">
+</head>
+<body>
+  <main>
+    <header><img src="./mark.svg" width="36" height="36" alt=""><h1>WalkThrough<span>.</span></h1></header>
+    <p>Choose a floor, then tap the plan to move your dot in the presenter’s building.</p>
+    <label for="floor">Floor</label>
+    <select id="floor"><option value="3">04 · Interface</option><option value="2">03 · API</option><option value="1" selected>02 · Services</option><option value="0">01 · Database</option></select>
+    <button id="map" aria-label="Move around the floor plan">
+      <span class="room">West</span><span class="room">Center</span><span class="room">East</span>
+      <span class="hall">Hallway</span><span id="dot"></span>
+    </button>
+    <p id="status" role="status">Joining the presentation…</p>
+  </main>
+  <script type="module" src="./audience.js"></script>
+</body></html>

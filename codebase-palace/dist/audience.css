@@ -1,0 +1,9 @@
+:root{color-scheme:dark;font-family:system-ui;background:#172820;color:#f4f9ec}
+*{box-sizing:border-box}body{margin:0}main{width:min(100% - 34px,460px);margin:25px auto}
+header{display:flex;align-items:center;gap:10px}h1{font-size:2rem;letter-spacing:-.06em;margin:0}h1 span{color:#dafa80}
+p{line-height:1.5;color:#ccd9ca}label{display:block;font-size:.85rem;margin:22px 0 5px}
+select{width:100%;padding:11px;background:#2d4739;color:inherit;border:1px solid #74917b;border-radius:8px;font:inherit}
+#map{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;position:relative;width:100%;height:230px;margin-top:10px;padding:6px;background:#9fb7a3;border:1px solid #adc0aa;border-radius:10px;touch-action:none;cursor:crosshair;color:#214232;font:inherit}
+.room,.hall{display:grid;place-items:center;background:#dbe9d3;border-radius:5px}.hall{grid-column:1/-1;background:#b5cda9}
+#dot{position:absolute;width:18px;height:18px;border-radius:50%;background:#e5ff74;border:2px solid #274b36;left:50%;top:85%;transform:translate(-50%,-50%);box-shadow:0 1px 9px #244231}
+button:focus-visible,select:focus-visible{outline:2px solid #e5ff74;outline-offset:4px}

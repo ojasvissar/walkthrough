@@ -1,0 +1,10 @@
+.DS_Store
+.openai/*.local.*
+architecture.json
+
+node_modules/
+
+/dist/server/
+.env
+.env.*
+!.env.example
