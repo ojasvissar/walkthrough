@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#182820">
+  <meta name="theme-color" content="#f2f1eb">
+  <meta name="color-scheme" content="light dark">
   <meta name="description" content="Walk through a codebase, follow a request, and fix a bug in a 3D memory palace.">
   <title>WalkThrough — The Tiny Shop</title>
   <link rel="icon" href="./mark.svg" type="image/svg+xml">
+  <script src="./theme.js"></script>
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./theme.css">
 </head>
 <body>
   <header class="masthead workspace-masthead">
@@ -20,6 +23,7 @@
         <button class="top-link" data-nav="alarms" id="nav-alarms"><i data-icon="bell"></i>Alarms<span class="nav-alarm-count" id="nav-alarm-count">1</span></button>
         <button class="top-link" data-nav="ask"><i data-icon="small-spark"></i>Ask the building</button>
       </nav>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Dark mode" aria-pressed="false" hidden></button>
     </div>
   </header>
   <main>

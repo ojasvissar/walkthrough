@@ -15,6 +15,8 @@ Open [http://127.0.0.1:8765](http://127.0.0.1:8765). The Codex option uses an au
 
 **Orbit** shows the full building. In **Play**, the voxel Codex bot is your default avatar. Use the picker to switch to the man or woman. Move with WASD or the arrow keys, hold Shift to run, and drag to look around. Follow the stairwell between floors. Enter a room through its doorway or press E to inspect it.
 
+Use the sun or moon in the header to select a theme. WalkThrough follows your system appearance until you select a theme, then remembers your choice in the browser.
+
 ## Avatar assets
 
 The three local rigs follow the [Codex 3D Asset voxel preset](https://github.com/anisayari/codex-3d-asset/blob/main/data/style-presets.json) and stay within its 2,500-triangle budget. Their picker portraits are rendered from those same rigs. The repository’s external generation workflow uses Tripo credentials.

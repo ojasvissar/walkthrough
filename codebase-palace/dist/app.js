@@ -61,6 +61,7 @@ try {
 } catch {
   stage.dataset.fallback = 'true';
 }
+window.addEventListener('walkthrough:theme', (event) => palace?.setTheme(event.detail));
 
 let model;
 let selected;

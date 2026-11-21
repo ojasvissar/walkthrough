@@ -16,13 +16,13 @@ const toVec = (x, y, z) => new T.Vector3(x, y, z);
 const motionSetting = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 function lights(scene) {
-  scene.add(new T.HemisphereLight('#fff1dd', '#7d97b3', 1.74));
+  const ambient = new T.HemisphereLight('#fff1dd', '#7d97b3', 1.74);
   const sun = new T.DirectionalLight('#ffe4c3', 2.09);
   sun.position.set(-11, 21, 16);
-  scene.add(sun);
   const fill = new T.DirectionalLight('#a6d3f9', .81);
   fill.position.set(10, 6, -9);
-  scene.add(fill);
+  scene.add(ambient, sun, fill);
+  return { ambient, sun, fill };
 }
 
 function softShadow() {
@@ -372,14 +372,14 @@ export class Palace {
     this.onLocation = onLocation;
     this.onInteract = onInteract;
     this.scene = new T.Scene();
-    lights(this.scene);
+    this.lighting = lights(this.scene);
     this.shadowMaterial = softShadow();
     this.camera = new T.OrthographicCamera(-10, 10, 10, -10, .1, 150);
     this.walkCamera = new T.PerspectiveCamera(63, 1, .045, 85);
     this.renderer = new T.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     this.renderer.setClearColor(0, 0);
     this.renderer.toneMapping = T.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.02;
+    this.setTheme(document.documentElement.dataset.theme);
     this.renderer.domElement.tabIndex = 0;
     this.renderer.domElement.setAttribute('aria-label', '3D palace. Drag to orbit, or play with WASD and inspect rooms with E.');
     mount.append(this.renderer.domElement);
@@ -409,6 +409,15 @@ export class Palace {
       requestAnimationFrame(frame);
     };
     requestAnimationFrame(frame);
+  }
+
+  setTheme(theme) {
+    const dark = theme === 'dark';
+    const { ambient, sun, fill } = this.lighting;
+    ambient.intensity = dark ? 1.17 : 1.74;
+    sun.intensity = dark ? 2.02 : 2.09;
+    fill.intensity = dark ? .97 : .81;
+    this.renderer.toneMappingExposure = dark ? .94 : 1.02;
   }
 
   load(model) {
