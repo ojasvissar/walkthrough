@@ -12,8 +12,8 @@ const initial = { yaw: .48, pitch: .46, zoom: 1 };
 const limestone = '#e5d9c3';
 const brass = '#ab8865';
 const railing = '#445869';
-const selectionColor = '#d8e590';
-const requestColor = '#ffe1a0';
+const selectionColor = '#edbfd0';
+const requestColor = '#e7eeaa';
 const toVec = (x, y, z) => new T.Vector3(x, y, z);
 const motionSetting = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -278,7 +278,7 @@ function requestFigure(parent) {
   root.visible = false;
   parent.add(root);
   const color = new T.MeshBasicMaterial({ color: requestColor });
-  const edge = new T.MeshBasicMaterial({ color: '#526c5f' });
+  const edge = new T.MeshBasicMaterial({ color: '#626544' });
   const ring = new T.Mesh(new T.RingGeometry(.275, .309, 32), color);
   ring.rotation.x = -Math.PI / 2;
   ring.position.y = .024;
@@ -416,10 +416,10 @@ export class Palace {
   setTheme(theme) {
     const dark = theme === 'dark';
     const { ambient, sun, fill } = this.lighting;
-    ambient.color.set(dark ? '#d9e7de' : '#fff1dd');
-    ambient.groundColor.set(dark ? '#81968d' : '#8ca39b');
-    sun.color.set(dark ? '#ffe2be' : '#ffe4c3');
-    fill.color.set(dark ? '#a9caca' : '#b5d7d9');
+    ambient.color.set(dark ? '#eadfd0' : '#fff1dd');
+    ambient.groundColor.set(dark ? '#838d76' : '#9aa28f');
+    sun.color.set(dark ? '#ffdfc2' : '#ffe4c3');
+    fill.color.set(dark ? '#bcbaaa' : '#ced1be');
     ambient.intensity = dark ? 1.28 : 1.74;
     sun.intensity = dark ? 2.07 : 2.09;
     fill.intensity = dark ? .87 : .81;
@@ -491,7 +491,7 @@ export class Palace {
         if (!target) continue;
         const from = this.rooms.get(room.id);
         const cycle = room.status === 'cycle' && model.rooms.find((r) => r.id === to)?.status === 'cycle';
-        const line = routeLine(this.building, corridor(from.point, target.point), cycle ? '#899db1' : '#8aaa76', .67);
+        const line = routeLine(this.building, corridor(from.point, target.point), cycle ? '#d59ab1' : '#a4ad83', .67);
         line.visible = cycle;
         this.edges.push({ from: room.id, to, line, cycle });
       }

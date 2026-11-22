@@ -12,7 +12,7 @@
     const dark = theme === 'dark';
     const changed = root.dataset.theme !== theme;
     root.dataset.theme = theme;
-    if (headerColor) headerColor.content = dark ? '#1b302f' : '#d8e5de';
+    if (headerColor) headerColor.content = dark ? '#1d201a' : '#eee8dc';
     for (const toggle of document.querySelectorAll('[data-theme-toggle]')) {
       toggle.setAttribute('aria-pressed', String(dark));
       toggle.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
