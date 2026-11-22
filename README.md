@@ -11,7 +11,7 @@ npm ci
 npm start
 ```
 
-Open [WalkThrough on localhost](http://127.0.0.1:8765). Use **Orbit** for the full building or **Play** to explore as Codex, the man, or the woman. Move with WASD or the arrow keys, hold Shift to run, drag to look, and press E to inspect a room. WalkThrough opens in dark mode by default. Use the sun or moon in the header to switch themes.
+Open [WalkThrough on localhost](http://127.0.0.1:8765). Use **Orbit** for the full building or **Play** to explore as Codex, the man, or the woman. Move with WASD or the arrow keys, hold Shift to run, drag to look, and press E to inspect a room. Use **Style** to switch between Print and Neo-brutalist. The sun or moon button switches between light and dark in either style.
 
 Start with `WALKTHROUGH_CODEX=1 npm start` to enable the authenticated local Codex CLI. You can also serve `public/` with a static file server for the browser demo.
 

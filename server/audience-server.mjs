@@ -12,6 +12,7 @@ const assets = {
   '/js/theme.js': ['js/theme.js', 'text/javascript; charset=utf-8'],
   '/styles/audience.css': ['styles/audience.css', 'text/css; charset=utf-8'],
   '/styles/theme.css': ['styles/theme.css', 'text/css; charset=utf-8'],
+  '/styles/brutalist.css': ['styles/brutalist.css', 'text/css; charset=utf-8'],
   '/assets/icons/walkthrough.svg': ['assets/icons/walkthrough.svg', 'image/svg+xml'],
 };
 const token = () => randomBytes(16).toString('base64url');

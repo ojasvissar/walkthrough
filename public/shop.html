@@ -10,9 +10,19 @@
   <script src="./js/theme.js"></script>
   <link rel="stylesheet" href="./styles/app.css">
   <link rel="stylesheet" href="./styles/theme.css">
+  <link rel="stylesheet" href="./styles/brutalist.css">
 </head>
 <body>
-  <header class="masthead"><div class="top-inner shop-bar"><a class="brand" href="./">WalkThrough<span class="brand-dot">.</span></a><span>The Tiny Shop</span><button type="button" class="theme-toggle" data-theme-toggle aria-label="Dark mode" aria-pressed="false" hidden></button></div></header>
+  <header class="masthead">
+    <div class="top-inner shop-bar">
+      <a class="brand" href="./">WalkThrough<span class="brand-dot">.</span></a>
+      <span>The Tiny Shop</span>
+      <div class="appearance-tools" role="group" aria-label="Appearance">
+        <button type="button" class="style-toggle" data-style-toggle aria-label="Neo-brutalist style" aria-pressed="false" hidden>Style</button>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Dark mode" aria-pressed="false" hidden></button>
+      </div>
+    </div>
+  </header>
   <main class="shop-page">
     <div class="repo-context"><span class="repo-badge">DEMO STORE</span></div>
     <h1>The Tiny Shop<span>.</span></h1>

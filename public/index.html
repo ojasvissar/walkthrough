@@ -11,6 +11,7 @@
   <script src="./js/theme.js"></script>
   <link rel="stylesheet" href="./styles/app.css">
   <link rel="stylesheet" href="./styles/theme.css">
+  <link rel="stylesheet" href="./styles/brutalist.css">
 </head>
 <body class="workspace-page">
   <header class="masthead workspace-masthead">
@@ -23,7 +24,10 @@
         <button class="top-link" data-nav="alarms" id="nav-alarms" aria-label="Alarms" title="Alarms"><i data-icon="bell"></i><span class="nav-label">Alarms</span><span class="nav-alarm-count" id="nav-alarm-count">1</span></button>
         <button class="top-link" data-nav="ask" aria-label="Ask the building" title="Ask the building"><i data-icon="small-spark"></i><span class="nav-label">Ask<span class="ask-label-tail"> the building</span></span></button>
       </nav>
-      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Dark mode" aria-pressed="false" hidden></button>
+      <div class="appearance-tools" role="group" aria-label="Appearance">
+        <button type="button" class="style-toggle" data-style-toggle aria-label="Neo-brutalist style" aria-pressed="false" hidden>Style</button>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Dark mode" aria-pressed="false" hidden></button>
+      </div>
     </div>
   </header>
   <main>

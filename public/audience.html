@@ -10,10 +10,18 @@
   <script src="./js/theme.js"></script>
   <link rel="stylesheet" href="./styles/audience.css">
   <link rel="stylesheet" href="./styles/theme.css">
+  <link rel="stylesheet" href="./styles/brutalist.css">
 </head>
 <body>
   <main>
-    <header><img src="./assets/icons/walkthrough.svg" width="36" height="36" alt=""><h1>WalkThrough<span>.</span></h1><button type="button" class="theme-toggle" data-theme-toggle aria-label="Dark mode" aria-pressed="false" hidden></button></header>
+    <header>
+      <img src="./assets/icons/walkthrough.svg" width="36" height="36" alt="">
+      <h1>WalkThrough<span>.</span></h1>
+      <div class="appearance-tools" role="group" aria-label="Appearance">
+        <button type="button" class="style-toggle" data-style-toggle aria-label="Neo-brutalist style" aria-pressed="false" hidden>Style</button>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Dark mode" aria-pressed="false" hidden></button>
+      </div>
+    </header>
     <p>Choose a floor, then tap the plan to move your dot in the presenter’s building.</p>
     <label for="floor">Floor</label>
     <select id="floor"><option value="3">04 · Interface</option><option value="2">03 · API</option><option value="1" selected>02 · Services</option><option value="0">01 · Database</option></select>

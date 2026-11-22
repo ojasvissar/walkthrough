@@ -85,7 +85,8 @@ body { background: var(--paper); color: var(--ink); }
 .nav-request-dot { background: var(--accent); border-radius: 50%; }
 .nav-alarm-count { background: var(--danger-wash); color: var(--danger); border: 1px solid var(--danger-line); border-radius: 100px; }
 
-.theme-toggle {
+.appearance-tools { display: flex; gap: 5px; }
+:is(.theme-toggle,.style-toggle) {
   display: grid;
   place-items: center;
   flex: 0 0 auto;
@@ -98,8 +99,9 @@ body { background: var(--paper); color: var(--ink); }
   color: var(--accent);
   cursor: pointer;
 }
-.theme-toggle:hover { background: var(--accent-wash); border-color: var(--accent-line); }
-.theme-toggle[hidden], .theme-toggle .theme-moon, [data-theme=light] .theme-toggle .theme-sun { display: none; }
+:is(.theme-toggle,.style-toggle):hover { background: var(--accent-wash); border-color: var(--accent-line); }
+.style-toggle { font: 700 .625rem/1 var(--mono, monospace); }
+.appearance-tools [hidden], .theme-toggle .theme-moon, [data-theme=light] .theme-toggle .theme-sun { display: none; }
 [data-theme=light] .theme-toggle .theme-moon { display: block; }
 .theme-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; }
 
@@ -255,7 +257,7 @@ dialog::backdrop { background: #080706b8; }
 .masthead:has(.shop-bar) { background: var(--inset); border-color: var(--line); color: var(--ink); }
 
 .audience-page { background: var(--paper); color: var(--ink); }
-.audience-page .theme-toggle { margin-left: auto; }
+.audience-page .appearance-tools { margin-left: auto; }
 .audience-page h1 span { color: var(--accent); }
 .audience-page p { color: var(--muted); }
 .audience-page select { background: var(--white); border-color: var(--line); }
@@ -321,8 +323,8 @@ dialog::backdrop { background: #080706b8; }
   .workspace-masthead .top-link svg { width: 19px; height: 19px; }
   .workspace-masthead .nav-request-dot { position: absolute; top: 7px; right: 6px; background: #e1eca2; }
   .workspace-masthead .nav-alarm-count { position: absolute; top: 2px; right: 2px; min-width: 14px; height: 14px; padding: 0 3px; font-size: .55rem; }
-  .workspace-masthead .theme-toggle {
-    margin-top: auto;
+  .workspace-masthead .appearance-tools { flex-direction: column; margin-top: auto; }
+  .workspace-masthead :is(.theme-toggle,.style-toggle) {
     width: 37px;
     height: 37px;
     border-radius: 50%;
@@ -330,23 +332,33 @@ dialog::backdrop { background: #080706b8; }
     border-color: #63594e;
     color: #edbfd0;
   }
-  .workspace-masthead .theme-toggle:hover { background: #443730; }
+  .workspace-masthead :is(.theme-toggle,.style-toggle):hover { background: #443730; }
 }
 @media (min-width: 761px) and (max-height: 500px) {
   .workspace-masthead .top-inner { padding: 8px; gap: 9px; }
   .workspace-masthead .brand-mark,.workspace-masthead .top-nav .top-link { width: 34px; height: 34px; }
   .workspace-masthead .top-nav { gap: 3px; }
-  .workspace-masthead .theme-toggle { width: 30px; height: 30px; }
+  .workspace-masthead .appearance-tools { gap: 4px; }
+  .workspace-masthead :is(.theme-toggle,.style-toggle) { width: 30px; height: 30px; }
+}
+@media (min-width: 651px) and (max-width: 760px) {
+  .workspace-masthead .brand-name, .workspace-masthead .ask-label-tail { display: none; }
+  .workspace-masthead .top-nav { gap: 1px; }
+  .workspace-masthead .top-link { padding-inline: 6px; gap: 4px; }
+  .workspace-masthead :is(.theme-toggle,.style-toggle) { width: 35px; height: 35px; }
 }
 @media (max-width: 650px) {
   .workspace-masthead .top-inner { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 7px; }
   .workspace-masthead .top-nav { grid-area: 2 / 1 / auto / -1; justify-self: stretch; margin: 0; }
-  .workspace-masthead .theme-toggle { grid-area: 1 / 2; }
-  .theme-toggle { width: 35px; height: 35px; }
+  .workspace-masthead .appearance-tools { grid-area: 1 / 2; }
+  :is(.theme-toggle,.style-toggle) { width: 35px; height: 35px; }
 }
 @media (max-width: 440px) {
   .workspace-masthead .top-link { font-size: .63rem; }
   .stage-heading { padding: 4px 6px; }
   .stage-legend { padding: 4px 5px; }
   .stage-title { font-size: .75rem; }
+}
+@media (max-width: 440px) and (max-height: 650px) {
+  .workspace-page .style-toggle { width: 29px; height: 29px; }
 }
