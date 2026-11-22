@@ -12,6 +12,8 @@ const initial = { yaw: .48, pitch: .46, zoom: 1 };
 const limestone = '#e5d9c3';
 const brass = '#ab8865';
 const railing = '#445869';
+const selectionColor = '#ff7648';
+const requestColor = '#ffc294';
 const toVec = (x, y, z) => new T.Vector3(x, y, z);
 const motionSetting = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -187,7 +189,7 @@ function addRoom(parent, room, slot, count, width, x, shadowMaterial) {
     box(g, '#eee2c7', support * (width / 2 - .26), .58, 1.57, .37, .14, .067);
   }
   const border = new T.Group();
-  const selectionMat = new T.MeshBasicMaterial({ color: '#b9f064' });
+  const selectionMat = new T.MeshBasicMaterial({ color: selectionColor });
   for (const z of [-2.92, 1.91]) box(border, selectionMat, 0, .114, z, width - .075, .065, .061);
   for (const side of [-1, 1]) box(border, selectionMat, side * (width / 2 - .06), .11, -.50, .061, .055, 4.8);
   border.visible = false;
@@ -275,8 +277,8 @@ function requestFigure(parent) {
   const root = new T.Group();
   root.visible = false;
   parent.add(root);
-  const color = new T.MeshBasicMaterial({ color: '#d9ff61' });
-  const edge = new T.MeshBasicMaterial({ color: '#426f63' });
+  const color = new T.MeshBasicMaterial({ color: requestColor });
+  const edge = new T.MeshBasicMaterial({ color: '#795241' });
   const ring = new T.Mesh(new T.RingGeometry(.275, .309, 32), color);
   ring.rotation.x = -Math.PI / 2;
   ring.position.y = .024;
@@ -414,10 +416,14 @@ export class Palace {
   setTheme(theme) {
     const dark = theme === 'dark';
     const { ambient, sun, fill } = this.lighting;
-    ambient.intensity = dark ? 1.17 : 1.74;
-    sun.intensity = dark ? 2.02 : 2.09;
-    fill.intensity = dark ? .97 : .81;
-    this.renderer.toneMappingExposure = dark ? .94 : 1.02;
+    ambient.color.set(dark ? '#e6ded4' : '#fff1dd');
+    ambient.groundColor.set(dark ? '#847f78' : '#7d97b3');
+    sun.color.set(dark ? '#ffd7bb' : '#ffe4c3');
+    fill.color.set(dark ? '#c1c1be' : '#a6d3f9');
+    ambient.intensity = dark ? 1.28 : 1.74;
+    sun.intensity = dark ? 2.07 : 2.09;
+    fill.intensity = dark ? .87 : .81;
+    this.renderer.toneMappingExposure = dark ? .96 : 1.02;
   }
 
   load(model) {
@@ -485,7 +491,7 @@ export class Palace {
         if (!target) continue;
         const from = this.rooms.get(room.id);
         const cycle = room.status === 'cycle' && model.rooms.find((r) => r.id === to)?.status === 'cycle';
-        const line = routeLine(this.building, corridor(from.point, target.point), cycle ? '#8659a2' : '#668c64', .62);
+        const line = routeLine(this.building, corridor(from.point, target.point), cycle ? '#b7ab9f' : '#bf775b', .67);
         line.visible = cycle;
         this.edges.push({ from: room.id, to, line, cycle });
       }
@@ -658,10 +664,10 @@ export class Palace {
     const room = this.rooms.get(id);
     if (!room) return;
     this.incident = particleSystem(this.building, room.point.clone().add(toVec(.35, 0, -1.92)), 'incident');
-    room.selectionMat.color.set('#ff8e59');
+    room.selectionMat.color.set('#ff4e31');
     this.labels.get(id).classList.add('failed');
     this.failure = id;
-    this.figure.color.color.set('#ff9a6d');
+    this.figure.color.color.set('#ff643f');
     this.figure.body.rotation.z = Math.PI / 2;
     this.figure.body.position.y = .17;
   }
@@ -673,11 +679,11 @@ export class Palace {
       this.incident = null;
     }
     if (this.failure) {
-      this.rooms.get(this.failure)?.selectionMat.color.set('#b9f064');
+      this.rooms.get(this.failure)?.selectionMat.color.set(selectionColor);
       this.labels.get(this.failure)?.classList.remove('failed');
     }
     this.failure = null;
-    this.figure.color.color.set('#d9ff61');
+    this.figure.color.color.set(requestColor);
     this.figure.body.rotation.z = 0;
     this.figure.body.position.y = 0;
   }
@@ -688,7 +694,7 @@ export class Palace {
     const from = this.rooms.get(previous)?.point;
     const start = from || to.clone().add(toVec(0, 0, 1.53));
     const points = previous === id ? [to, to.clone()] : corridor(start, to);
-    if (from && previous !== id) routeLine(this.traceLayer, points, '#a9d747', .92, .25);
+    if (from && previous !== id) routeLine(this.traceLayer, points, requestColor, .92, .25);
     this.figure.root.visible = true;
     this.movement = { path: new T.CurvePath(), start: performance.now(), length: motionSetting.matches ? 1 : milliseconds };
     for (let i = 1; i < points.length; i++) this.movement.path.add(new T.LineCurve3(points[i - 1], points[i]));
